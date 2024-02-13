@@ -1,26 +1,44 @@
 package store;
 
 import java.util.ArrayList;
+/**
+ * @author Oyebola Ibrahim Oyewunmi
+ * @version 0.2
+ * @since [February 11, 2024]
+ */
 
 public class Order {
+    
 private static int nextOrderNumber = 1000; // Initial order number
     private int orderNumber;
     private Customer customer;
     private ArrayList<Item> items;
 
-    // Constructor
+    /**
+     * Constructs an order with the customer
+     * @param customer the customer placing the order
+     * @since feb 11
+     */
     public Order(Customer customer) {
         this.customer = customer;
         this.orderNumber = nextOrderNumber++;
         this.items = new ArrayList<>();
     }
-
-    // Method to add an item to the order
+    /**
+     * Adds item to order
+     * @param item item to add
+     * @since feb 11
+     */
+    
     public void addItem(Item item) {
         items.add(item);
     }
 
-    // Method to calculate the total price of the order
+    /**
+     * Calculates the total price of the order
+     * @return the total price of the order
+     * @since feb 11
+     */
     public int getPrice() {
         int totalPrice = 0;
         for (Item item : items) {
@@ -29,7 +47,11 @@ private static int nextOrderNumber = 1000; // Initial order number
         return totalPrice;
     }
 
-    // Method to generate the receipt
+    /**
+     * Return a string of the order
+     * @return a string of the order
+     * @since feb 11
+     */   
     @Override
     public String toString() {
         StringBuilder receipt = new StringBuilder();
