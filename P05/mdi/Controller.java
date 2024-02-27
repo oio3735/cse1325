@@ -28,22 +28,52 @@ public class Controller
 	}
 
 	public void mdi() {
-		isRunning = true;
+		boolean isRunning = true;
 		while(isRunning){
 			selectFromMenu();
 			output = "";
-			try{
-			mainMenu.run(getInt("Selection: "));
-		}	catch(Exception e){
-			System.err.println("Invalid input");
-		}
+			System.out.print("Select: ");
+			int choice = getInt();
+			switch(choice){
+				case 0: 
+					exit();
+					break;
+				case 1:
+					placeOrder();
+					break;
+				case 2:
+					newCustomer();
+					break;
+				case 3:
+					newTool();
+					break;
+				case 4:
+					newPlant();
+					break;
+				case 5:
+					switchView();
+					break;
+				default:
+					System.out.println("Not an option, try again.")
+				}
+				}
 
-		}
+			}
+
+	private void selectFromMenu(){
+		clearScreen();
+        System.out.println(storeName + " Main Menu");
+        System.out.println("0] Exit");
+        System.out.println("1] Place Order");
+        System.out.println("2] Welcome new Customer");
+        System.out.println("3] Define new Tool");
+        System.out.println("4] Define new Plant");
+        System.out.println("5] Switch View");
 	}
-
 	private void exit(){
 		isRunning = false;
 	}
+
 
 	private void placeOrder(){
 		int customerIndex = getInt("Select customer");
@@ -60,8 +90,8 @@ public class Controller
 	}
 
 	private void newCustomer(){
-		String name = getString("Enter customer name");
-        String email = getString("Enter customer email");
+		String name = getString("Ibrahim Oyewunmi");
+        String email = getString("ibrahimoyew@gmail.com");
         store.addCustomer(new Customer(name, email));
         output = "Customer added successfully.";
         view = View.CUSTOMERS;
